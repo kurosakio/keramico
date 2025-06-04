@@ -55,6 +55,9 @@ public class ProductService {
         if (product.getCategory() != null) {
             oldProduct.setCategory(product.getCategory());
         }
+        if (product.getPicture() != null) {
+            oldProduct.setPicture(product.getPicture());
+        }
         return productRepository.save(oldProduct);
     }
 

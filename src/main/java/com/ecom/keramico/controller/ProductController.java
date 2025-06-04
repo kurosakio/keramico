@@ -11,17 +11,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/products/")
+@RequestMapping("/api/products")
 @Slf4j
+@CrossOrigin(origins = {"http://localhost:8081", "http://localhost:5173"})
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<Product>> showAllProducts() {
+    public List<Product> showAllProducts() {
         log.info("ProductController showAllProducts()");
-        return ResponseEntity.ok(productService.getAllProducts());
+        return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
