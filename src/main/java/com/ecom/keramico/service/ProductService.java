@@ -53,12 +53,13 @@ public class ProductService {
             oldProduct.setPrice(product.getPrice());
         }
         if (product.getCategory() != null) {
+            categoryRepository.save(product.getCategory());
             oldProduct.setCategory(product.getCategory());
         }
         if (product.getPicture() != null) {
             oldProduct.setPicture(product.getPicture());
         }
-        return productRepository.save(oldProduct);
+        return productRepository.saveAndFlush(oldProduct);
     }
 
     public void deleteProduct(Long id) {
